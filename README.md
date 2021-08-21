@@ -14,7 +14,7 @@ react-chartjs-2 - https://www.npmjs.com/package/react-chartjs-2
 -Weather Map screen visually showing global weather conditions (Cloudiness, Precipitation, Pressure, Wind speed and Temperature).
 -Air Pollution screen showing current Сoncentration Carbon monoxide (μg/m3), Nitrogen monoxide (μg/m3), Nitrogen dioxide (μg/m3) and other elements...
 
-![Alt text](./src/Res/home?raw=true "Home")
+![Alt text](./src/Res/home.png?raw=true "Home")
 
 ![Alt text](./src/Res/weathergraph.png?raw=true "WeatherGraph")
 
