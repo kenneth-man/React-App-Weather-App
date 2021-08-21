@@ -1,38 +1,289 @@
-.App {
+/*boiler plate project set-up*/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+:root {
+  --turqoise: rgb(32,178,178);
+}
+
+/* width */
+html::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+/* Track */
+html::-webkit-scrollbar-track,
+div::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+/* Handle */
+html::-webkit-scrollbar-thumb,
+div::-webkit-scrollbar-thumb {
+  background: #9e9e9e;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+html::-webkit-scrollbar-thumb:hover,
+div::-webkit-scrollbar-thumb:hover {
+  background: #797979;
+}
+
+/***************/
+
+h1,h2,h3,h4,h5,a,
+p,span,div,button,
+select,input {
+  font-family: 'Heebo';
+  font-weight: 300;
   text-align: center;
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  height: max-content;
+  width: max-content;
+  font-size: 14px;
+  padding: 7px 15px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  border: none;
+  background-color: #fff;
+  color: #000;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:hover,
+input:hover {
+  cursor: pointer;
+  filter: brightness(90%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button:active {
+  filter: brightness(80%);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.col {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.center {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.transition {
+  transition: all 0.2s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.translucentBack {
+  background-color: rgba(255,255,255,0.25);
+}
+
+.round {
+  border-radius: 10px;
+}
+
+.spinner {
+  position: absolute;
+  top: 55%;
+  left: 47.5%;
+}
+
+.screen {
+  min-height: 100vh;
+  height: max-content;
+  width: 100%;
+}
+
+.link-right,
+.link-left {
+  position: absolute;
+  top: 50%;
+  z-index: 50;
+  background-color: transparent;
+}
+
+.link-right:hover img,
+.link-left:hover img {
+  transform: scale(1.3);
+}
+
+.link-left {
+  left: 2%;
+}
+
+.link-right {
+  right: 2%;
+}
+
+.searchbar {
+  width: 35%;
+  height: 45px;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding-left: 15px;
+  border-radius: 50px;
+  color: silver;
+}
+
+.home {
+  
+}
+
+.home__inner,
+.home__background,
+.weatherGraph__inner,
+.weatherGraph__background,
+.weatherMap__inner,
+.weatherMap__background,
+.airPollution__inner,
+.airPollution__background {
+  height: 100vh;
+  width: 100%;
+}
+
+.home__inner,
+.weatherGraph__inner,
+.weatherMap__inner,
+.airPollution__inner {
+  position: relative;
+}
+
+.home__background,
+.weatherGraph__background,
+.weatherMap__background {
+  position: absolute;
+  object-fit: cover;
+  z-index: -5;
+  filter: brightness(90%);
+}
+
+.home__grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+  width: 40%;
+  margin-right: -25%;
+}
+
+.home__forecast {
+  width: 95%;
+  height: 27.5%;
+}
+
+.home__forecast-row {
+  width: 100%;
+  height: 72.5%;
+  overflow-x: auto;
+  justify-content: flex-start;
+}
+
+.home__allCountries {
+  position: absolute;
+  left: 8.5%;
+  top: 9%;
+  height: max-content;
+  max-height: 300px;
+  width: 250px;
+  overflow-y: auto;
+  padding: 10px;
+  justify-content: flex-start;
+}
+
+.chart {
+  height: 850px !important;
+  width: 1500px !important;
+  background-color: rgba(255,255,255,0.3);
+}
+
+.forecastComp {
+  margin-right: 25px;
+  padding: 10px 0px;
+  min-width: 135px;
+  height: 90%;
+}
+
+.weatherMap__grid {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: max-content;
+  width: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),url('./Res/map.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: 40%;
+  background-position-y: 40%;
+  /* background-size: 100%; */
+}
+
+.weatherMap__grid img {
+  height: 100%;
+  width: 100%;
+}
+
+.weatherMap__btns {
+  position: fixed;
+  top: 1%;
+  left: 0%;
+  width: 100%;
+  padding: 0 30%;
+}
+
+.weatherMap__btn--active {
+  background-color: var(--turqoise);
+  color: #fff;
+}
+
+.airPollution {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./Res/background.jpg');
+}
+
+.airPollution__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  height: 70%;
+  width: 90%;
 }
